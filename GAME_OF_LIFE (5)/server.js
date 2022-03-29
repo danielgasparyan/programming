@@ -1,4 +1,6 @@
 
+var whether="Garun";
+// var exanak=require("./exanak");
 //! Requiring modules  --  START
 var Grass = require("./modules/Grass.js");
 var GrassEater = require("./modules/GrassEater.js");
@@ -63,7 +65,7 @@ function matrixGenerator(matrixSize, grass, grassEater, AntiGrassEatersRob, Test
     }
 
 }
-matrixGenerator(20, 0, 0, 0, 0, 1);
+matrixGenerator(20, 2, 5, 0, 0, 1);
 //! Creating MATRIX -- END
 
 
@@ -109,7 +111,20 @@ function creatingObjects() {
     }
 }
 creatingObjects();
-
+function poxel(){
+    if (whether=="Garun") {
+         whether="Amar"
+    }
+    else if(whether=="Amar"){
+        whether="Ashun"
+    }
+    else if(whether=="Ashun"){
+         whether = "Dzmer"
+    }
+    else{
+         whether ="Garun"
+    }
+}
 function game() {
     if (grassArr[0] !== undefined) {
         for (var i in grassArr) {
@@ -155,3 +170,4 @@ function game() {
 
 
 setInterval(game, 500)
+setInterval(poxel, 5000)

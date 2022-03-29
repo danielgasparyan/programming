@@ -1,3 +1,7 @@
+
+
+
+
 function setup() {
 
     var socket = io();
@@ -13,7 +17,7 @@ function setup() {
     //! adding socket listener on "data" <-- name, after that fire 'drawCreatures' function 
 
     socket.on("data", drawCreatures);
-
+    
     function drawCreatures(data) {
         //! after getting data pass it to matrix variable
         matrix = data.matrix;
@@ -25,32 +29,119 @@ function setup() {
         //! Draw grassCount and grassEaterCount to HTML (use DOM objects to update information, yes, and use .innerText <- function)
 
         //! Drawing and coloring RECTs
-        for (var i = 0; i < matrix.length; i++) {
-            for (var j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j] == 1) {
-                    fill("green");
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 2) {
-                    fill("orange");
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 0) {
-                    fill('#acacac');
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 3) {
-                    fill('red');
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 4) {
-                    fill('blue');
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 5) {
-                    fill('yellow');
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 6) {
-                    fill('brown');
-                    rect(j * side, i * side, side, side);
+        if (whether=="Garun") {
+            for (var i = 0; i < matrix.length; i++) {
+                for (var j = 0; j < matrix[i].length; j++) {
+                    if (matrix[i][j] == 1) {
+                        fill("green");
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 2) {
+                        fill("orange");
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 0) {
+                        fill('#acacac');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 3) {
+                        fill('red');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 4) {
+                        fill('blue');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 5) {
+                        fill('yellow');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 6) {
+                        fill('brown');
+                        rect(j * side, i * side, side, side);
+                    }
                 }
             }
         }
+        if (whether=="Amar") {
+            for (var i = 0; i < matrix.length; i++) {
+                for (var j = 0; j < matrix[i].length; j++) {
+                    if (matrix[i][j] == 1) {
+                        fill("#CAE7B9");
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 2) {
+                        fill("white");
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 0) {
+                        fill('#acacac');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 3) {
+                        fill('red');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 4) {
+                        fill('blue');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 5) {
+                        fill('yellow');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 6) {
+                        fill('brown');
+                        rect(j * side, i * side, side, side);
+                    }
+                }
+            }
+        }
+        if (whether=="Ashun") {
+            for (var i = 0; i < matrix.length; i++) {
+                for (var j = 0; j < matrix[i].length; j++) {
+                    if (matrix[i][j] == 1) {
+                        fill("#F3DE8A");
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 2) {
+                        fill("#50514F");
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 0) {
+                        fill('#acacac');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 3) {
+                        fill('#941C2F');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 4) {
+                        fill('#001427');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 5) {
+                        fill('#F4D58D');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 6) {
+                        fill('brown');
+                        rect(j * side, i * side, side, side);
+                    }
+                }
+            }
+        }
+        if (whether=="Dzmer") {
+            for (var i = 0; i < matrix.length; i++) {
+                for (var j = 0; j < matrix[i].length; j++) {
+                    if (matrix[i][j] == 1) {
+                        fill("white");
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 2) {
+                        fill("#FCFDAF");
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 0) {
+                        fill('#acacac');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 3) {
+                        fill('#4E0110');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 4) {
+                        fill('#3C1B43');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 5) {
+                        fill('#D4E79E');
+                        rect(j * side, i * side, side, side);
+                    } else if (matrix[i][j] == 6) {
+                        fill('#CAD2C5');
+                        rect(j * side, i * side, side, side);
+                    }
+                }
+            }
+        }
+       
     }
 }
 

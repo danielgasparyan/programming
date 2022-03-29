@@ -29,14 +29,18 @@ module.exports = class Factory extends LiveForm {
             [this.x + 1, this.y + 1]
         ];
     }
-    getCordinates() {
+    getx() {
         let X = [this.x - 1, this.x, this.x + 1];
-        let Y = [this.y - 1, this.y, this.y + 1];
         let x = random(X);
+        if (x>=0) {
+                return x;
+        }
+    }
+    gety() {
+        let Y= [this.y - 1, this.y, this.y + 1];
         let y = random(Y);
-        if (x>=0 && y >=0) {
-            let xy = [x, y]
-            return xy;
+        if (y>=0) {
+                return y;
         }
     }
     chooseCell(character) {
@@ -54,11 +58,20 @@ module.exports = class Factory extends LiveForm {
         return super.chooseCell(character);
     }
     produce() {
-        let produceCell = [this.getCordinates(), this.getCordinates()];
-        if (produceCell[0][0] >= 0 && produceCell[0][1] >= 0 && produceCell[0] !== produceCell[1] && produceCell[0] !== [this.x, this.y] && produceCell[1] !== [this.x, this.y] && matrix[produceCell[0][1], produceCell[0][0]] != undefined && matrix[produceCell[1][1], produceCell[1][0]] != undefined) {
+        let x1=this.getx();
+        let y1=this.gety();
+        
+        
+        if (x1==this.x && y1==this.y) {
+            this.produce()
+            
+        }
+        else{
+            let produceCell = [x1, y1];
+        if (produceCell[0] >= 0 && produceCell[1] >= 0 && matrix[produceCell[0], produceCell[1]] != undefined) {
             if (produceCell[0] !== [this.x, this.y] && produceCell[1] !== [this.x, this.y]) {
                 if (this.energy == this.en - 10) {
-                let freeCell = [produceCell[0][0], produceCell[0][1]]
+                let freeCell = [produceCell[0], produceCell[1]]
                 matrix[this.y][this.x]=6
                 matrix[freeCell[1]][freeCell[0]] = 4;
                 matrix[this.y][this.x]=6
@@ -67,7 +80,7 @@ module.exports = class Factory extends LiveForm {
                 this.en = this.en - 10;
             }
             if (this.energy == this.eng - 15) {
-                let freeCell = [produceCell[1][0], produceCell[1][1]]
+                let freeCell = [produceCell[0], produceCell[1]]
                 matrix[this.y][this.x]=6
                 matrix[freeCell[1]][freeCell[0]] = 3;
                 matrix[this.y][this.x]=6
@@ -86,21 +99,24 @@ module.exports = class Factory extends LiveForm {
             }
             
         }
+        }
+        
+        
     }
     die() {
         for (var f in factoryArr) {
             if (this.x == factoryArr[f].x && this.y == factoryArr[f].y) {
-                for(let i in grassArr){
-                    if (this.x==grassArr[i].x && this.y==grassArr[i].y) {
-                        matrix[this.y][this.x]=1
-                        factoryArr.splice(f, 1)
-                    } 
-                    else {
+                // for(let i in grassArr){
+                //     if (this.x==grassArr[i].x && this.y==grassArr[i].y) {
+                //         matrix[this.y][this.x]=1
+                //         factoryArr.splice(f, 1)
+                //     } 
+                //     else {
                     matrix[this.y][this.x] = 0
                     factoryArr.splice(f, 1)
-                    }
+                //     }
                 
-                }
+                // }
                 
             }
         }
