@@ -37,13 +37,31 @@ module.exports=class Merac extends LiveForm{
     //     return found;
     // }
     die() {
-        for (var i in meracArr) {
-            if (this.x == meracArr[i].x && this.y == meracArr[i].y && this.energy == 0) {
-                meracArr.splice(i, 1)
-                matrix[this.y][this.x] = 0
+        if (whether=="Garun" || whether=="Amar") {
+            for (var i in meracArr) {
+                if (this.x == meracArr[i].x && this.y == meracArr[i].y && this.energy == 0) {
+                    meracArr.splice(i, 1)
+                    matrix[this.y][this.x] = 0
+                }
+            }
+            this.energy--
+        }
+        else if (whether=="Ashun") {
+            for (var i in meracArr) {
+                if (this.x == meracArr[i].x && this.y == meracArr[i].y && this.energy == 0) {
+                    meracArr.splice(i, 1)
+                    matrix[this.y][this.x] = 0
+                }
+            }
+            this.energy-2
+        }
+        else if (whether=="Dzmer") {
+            for (var i in meracArr) {
+                if (this.x == meracArr[i].x && this.y == meracArr[i].y && this.energy == 0) {
+                    meracArr.splice(i, 1)
+                    matrix[this.y][this.x] = 0
+                }
             }
         }
-        this.energy--
-        
     }
 }

@@ -1,6 +1,6 @@
 
 
-module.exports=function poxel(){
+module.exports = function poxel(){
         if (whether=="Garun") {
              whether="Amar"
         }
@@ -10,7 +10,7 @@ module.exports=function poxel(){
         else if(whether=="Ashun"){
              whether = "Dzmer"
         }
-        else{
+        else if(whether == "Dzmer"){
              whether ="Garun"
         }
  }

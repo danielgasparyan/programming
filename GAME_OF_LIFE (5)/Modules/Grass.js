@@ -1,8 +1,11 @@
 var LiveForm = require("./LiveForm");
 var random = require("./random");
-
-
+var grassHashiv=0;
+// var socket = io();
+// socket.on("data");
+// whether = data.whether
 module.exports = class Grass extends LiveForm {
+    
     constructor(x, y) {
         super(x, y);
         this.multiply = 0;
@@ -24,17 +27,42 @@ module.exports = class Grass extends LiveForm {
         return super.chooseCell(character);
     }
     mul() {
+        
         this.multiply++;
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
-
-        if (newCell && this.multiply >= 2) {
-            let x = newCell[0];
-            let y = newCell[1];
-            matrix[y][x] = 1;
-            let grass = new Grass(x, y);
-            grassArr.push(grass);
-            this.multiply = 0;
+        if(whether== "Garun" || whether=="Amar") {
+            if (newCell && this.multiply >= 2) {
+                grassHashiv++;
+                let x = newCell[0];
+                let y = newCell[1];
+                matrix[y][x] = 1;
+                let grass = new Grass(x, y);
+                grassArr.push(grass);
+                this.multiply = 0;
+            }
+        } else if(whether== "Ashun"){
+            if(newCell && this.multiply >= 5){
+                grassHashiv++;
+                let x = newCell[0];
+                let y = newCell[1];
+                matrix[y][x] = 1;
+                let grass = new Grass(x, y);
+                grassArr.push(grass);
+                this.multiply = 0;
+            }
+        } else if(whether== "Dzmer"){
+            if(newCell && this.multiply >= 10 ){
+                grassHashiv++;
+                let x = newCell[0];
+                let y = newCell[1];
+                matrix[y][x] = 1;
+                let grass = new Grass(x, y);
+                grassArr.push(grass);
+                this.multiply = 0;
+            }
         }
+        
+        
     }
 }

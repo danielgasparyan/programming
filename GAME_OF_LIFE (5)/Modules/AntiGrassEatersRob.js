@@ -1,5 +1,6 @@
 var LiveForm = require("./LiveForm");
 var random = require("./random.js");
+var antiGrassEatersRobHashiv=0;
 
 module.exports = class AntiGrassEatersRob extends LiveForm{
     constructor(x, y) {

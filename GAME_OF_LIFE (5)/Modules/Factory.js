@@ -72,18 +72,18 @@ module.exports = class Factory extends LiveForm {
             if (produceCell[0] !== [this.x, this.y] && produceCell[1] !== [this.x, this.y]) {
                 if (this.energy == this.en - 10) {
                 let freeCell = [produceCell[0], produceCell[1]]
-                matrix[this.y][this.x]=6
+                
                 matrix[freeCell[1]][freeCell[0]] = 4;
-                matrix[this.y][this.x]=6
+               
                 testRobArr.push(new TestRob(freeCell[0], freeCell[1]))
                 
                 this.en = this.en - 10;
             }
             if (this.energy == this.eng - 15) {
                 let freeCell = [produceCell[0], produceCell[1]]
-                matrix[this.y][this.x]=6
+                
                 matrix[freeCell[1]][freeCell[0]] = 3;
-                matrix[this.y][this.x]=6
+                
                 antiGrassEatersRobArr.push(new AntiGrassEatersRob(freeCell[0], freeCell[1]))
                 
                 this.eng = this.eng - 15;

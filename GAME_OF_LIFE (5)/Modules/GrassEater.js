@@ -1,7 +1,6 @@
 var LiveForm = require("./LiveForm");
 var random = require("./random.js");
-
-
+var grassEaterHashiv=0;
 
 module.exports = class GrassEater extends LiveForm {
     constructor(x, y) {
@@ -29,6 +28,7 @@ module.exports = class GrassEater extends LiveForm {
         let newCell = random(emptyCells);
 
         if (newCell) {
+            grassEaterHashiv++;
             let x = newCell[0];
             let y = newCell[1];
             matrix[y][x] = 2;
@@ -42,7 +42,7 @@ module.exports = class GrassEater extends LiveForm {
         let newCell = random(emptyCells);
 
         if (newCell) {
-
+            
             this.life++;
             let x = newCell[0];
             let y = newCell[1];
@@ -58,7 +58,16 @@ module.exports = class GrassEater extends LiveForm {
             this.x = x;
             this.y = y;
 
-            if (this.life >= 13) {
+            if (this.life >= 13 && whether=="Garun") {
+                this.mul();
+            }
+            else if(this.life >=10 && whether=="Amar" ){
+                this.mul();
+            }
+            else if(this.life >=16 && whether=="Ashun"){
+                this.mul();
+            }
+            else if(this.life >=20 && whether=="Dzmer"){
                 this.mul();
             }
         }
@@ -67,7 +76,13 @@ module.exports = class GrassEater extends LiveForm {
         }
     }
     move() {
-        this.life--;
+        if (whether == "Garun" || whether=="Amar"){
+            this.life--;
+        }
+        else if(whether == "Ashun" || whether=="Dzmer"){
+            this.life= this.life-2;
+        }
+        
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
 
@@ -79,7 +94,7 @@ module.exports = class GrassEater extends LiveForm {
             this.y = y;
             this.x = x;
         }
-        if (this.life < 0) {
+        if (this.life <= 0) {
             this.die();
         }
     }

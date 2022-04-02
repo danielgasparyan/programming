@@ -2,26 +2,35 @@
 
 
 
+var socket = io();
 function setup() {
 
-    var socket = io();
-
-    var side = 15;
-
+    let whether = 'Garun'
+    var side = 20;
     var matrix = [];
 
     //! Getting DOM objects (HTML elements)
-    // let grassCountElement = document.getElementById('grassCount');
-    // let grassEaterCountElement = document.getElementById('grassEaterCount');
-
+    let grassCountElement = document.getElementById('grassCount');
+    let grassEaterCountElement = document.getElementById('grassEaterCount');
+    let antiGrassEatersRobElement = document.getElementById('antiGrassEatersRobCount');
+    let testRobElement = document.getElementById('testRobCount');
+    let meracElement = document.getElementById('meracCount');
+    let factoryElement = document.getElementById('factoryCount');
     //! adding socket listener on "data" <-- name, after that fire 'drawCreatures' function 
 
     socket.on("data", drawCreatures);
-    
+
     function drawCreatures(data) {
+        console.log(data);
+        whether = data.whether
         //! after getting data pass it to matrix variable
         matrix = data.matrix;
-        // grassCountElement.innerText = data.grassCounter;
+        grassCountElement.innerText = data.grassCounter;
+        grassEaterCountElement.innerText = data.grassEaterCounter;
+        antiGrassEatersRobElement.innerText = data.antiGrassEatersRobCounter;
+        testRobElement.innerText = data.testRobCounter;
+        meracElement.innerText = data.meracCounter;
+        factoryElement.innerText = data.factoryCounter;
         //! Every time it creates new Canvas woth new matrix size
         createCanvas(matrix[0].length * side, matrix.length * side)
         //! clearing background by setting it to new grey color
@@ -144,14 +153,27 @@ function setup() {
        
     }
 }
-
-
-
-
-
-
-
-
+function kill() {
+    socket.emit("kill")
+}
+function grassGenerator(){
+    socket.emit("grassGenerator")
+}
+function grassEaterGenerator(){
+    socket.emit("grassEaterGenerator")
+}
+function antiGrassEatersRobGenerator(){
+    socket.emit("antiGrassEatersRobGenerator")
+}
+function testRobGenerator(){
+    socket.emit("testRobGenerator")
+}
+function meracGenerator(){
+    socket.emit("meracGenerator")
+}
+function factoryGenerator(){
+    socket.emit("factoryGenerator")
+}
 
 
 
